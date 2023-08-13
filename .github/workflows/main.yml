@@ -25,7 +25,7 @@ jobs:
           NAME: Tingyu
         with:
           arch: arm64
-          compiler: clang/14/binutils
+          compiler: clang/13/binutils
           defconfig: wayne_defconfig
           image: Image.gz-dtb
       - name: Upload zipper
