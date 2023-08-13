@@ -1,0 +1,35 @@
+name: Build Kernel and Upload Artifacts
+
+on:
+  push:
+    branches:
+      - 11.0-eas
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Checkout zipper
+        uses: actions/checkout@v3
+        with:
+          repository: lemniskett/AnyKernel3
+          path: zipper
+      - name: Android kernel build
+        uses: lemniskett/android-kernel-actions@master
+        id: build
+        env:
+          NAME: Tingyu
+        with:
+          arch: arm64
+          compiler: clang/12
+          defconfig: wayne_defconfig
+          image: Image.gz-dtb
+      - name: Upload zipper
+        uses: actions/upload-artifact@v3
+        with:
+          name: Tingyu_Entertainment
+          path: ./zipper/*.zip
