@@ -13,10 +13,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Checkout zipper
+      - name: Checkout AnyKernel3
         uses: actions/checkout@v3
         with:
-          repository: lemniskett/AnyKernel3
+          repository: ianchb/AnyKernel3_wayne
           path: zipper
       - name: Android kernel build
         uses: lemniskett/android-kernel-actions@master
@@ -28,7 +28,7 @@ jobs:
           compiler: clang/12/binutils
           defconfig: wayne_defconfig
           image: Image.gz-dtb
-      - name: Upload zipper
+      - name: Upload flashable zip file
         uses: actions/upload-artifact@v3
         with:
           name: Tingyu_Entertainment
